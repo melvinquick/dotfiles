@@ -1,0 +1,20 @@
+[editor]
+font-family = "FiraCode Nerd Font"
+format-on-save = true
+
+[terminal]
+font-family = "FiraCode Nerd Font"
+
+[terminal.default-profile]
+linux = "default"
+macos = "default"
+windows = "pwsh"
+
+[terminal.profiles.default]
+
+[terminal.profiles.pwsh]
+command = "pwsh"
+
+[core]
+color-theme = "Vivid Pastel Dream"
+icon-theme = "Bright Pastel Icons"

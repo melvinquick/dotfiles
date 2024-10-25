@@ -6,3 +6,6 @@ alias upgrade-release='sudo do-release-upgrade'
 alias upgrade-system='sudo nala full-upgrade --assume-yes && sudo nala autoremove --purge --config --assume-yes --fix-broken && sudo nala clean && sudo flatpak update --assumeyes && sudo snap refresh'
 alias nala='sudo nala'
 alias flatpak='sudo flatpak'
+
+# * Aliases for Bash Prompt
+alias refresh-bash-prompt='(clear; source ~/.bashrc)'

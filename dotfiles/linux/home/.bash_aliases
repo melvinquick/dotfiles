@@ -10,3 +10,6 @@ alias snap='sudo snap'
 
 # * Aliases for Bash Prompt
 alias refresh-bash-prompt='(clear; source ~/.bashrc)'
+
+# * Aliases for Weather
+alias weather='curl wttr.in/Clearfield+PA'

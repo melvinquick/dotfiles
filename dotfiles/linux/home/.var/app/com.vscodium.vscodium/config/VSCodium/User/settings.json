@@ -32,18 +32,20 @@
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
+  "[ini]": {
+    "editor.defaultFormatter": "lkrms.inifmt"
+  },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   // * Language Server Settings
   "python.languageServer": "Jedi",
-  // * Theme Settings
-  "workbench.colorTheme": "Nord",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.productIconTheme": "material-product-icons",
   // * Explorer Settings
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   // * Telemetry Settings
-  "redhat.telemetry.enabled": true
+  "redhat.telemetry.enabled": true,
+  "workbench.colorTheme": "Nord",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.productIconTheme": "material-product-icons"
 }

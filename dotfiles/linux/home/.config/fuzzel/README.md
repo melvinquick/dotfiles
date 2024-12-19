@@ -1,6 +1,6 @@
 ## What is Fuzzel?
 
-Fuzzel is a run launcher similar to things like dmenu or rofi.
+[Fuzzel](https://codeberg.org/dnkl/fuzzel) is a run launcher similar to things like dmenu or rofi.
 
 ## Where can the full list of config options be found?
 

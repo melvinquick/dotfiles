@@ -3,7 +3,7 @@ alias bandit='bandit -c bandit.yaml -r .'
 
 # * Aliases for System Updates / Installs / Uninstalls
 alias upgrade-release='sudo do-release-upgrade'
-alias upgrade-system='nala full-upgrade --assume-yes && nala autoremove --purge --config --assume-yes --fix-broken && nala clean && flatpak update --assumeyes && am -s && am -u && am -c'
+alias upgrade-system='nala full-upgrade --assume-yes && nala autoremove --purge --config --assume-yes --fix-broken && nala clean && flatpak update --assumeyes && am -u && am -c'
 alias nala='sudo nala'
 
 # * Aliases for Bash Prompt

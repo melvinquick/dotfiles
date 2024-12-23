@@ -10,8 +10,6 @@ alias upgrade-apps='sudo nala full-upgrade --assume-yes && sudo nala autoremove 
 alias upgrade-flatpaks='flatpak update --assumeyes'
 alias upgrade-appimages='am -u && am -c'
 
-# * Aliases for Bash Prompt
-alias refresh-bash-prompt='(clear; source ~/.bashrc)'
-
-# * Aliases for Weather
+# * Useful Aliases for Everyday Quality of Life
+alias clearr='(clear; source ~/.bashrc)'
 alias weather='curl wttr.in/Clearfield+PA'

@@ -12,4 +12,5 @@ alias upgrade-appimages='am -u && am -c'
 
 # * Useful Aliases for Everyday Quality of Life
 alias clearr='(clear; source ~/.bashrc)'
-alias weather='curl wttr.in/Clearfield+PA'
+alias pyver='python3 --version'
+alias weather='curl wttr.in/Clearfield+PA?format="\n+Location:+Clearfield,+PA+\n+Forecast:+%c+\n+Rainfall:+%p+\n+Temp:+%t(%f)+\n+Moon:+%m+\n"'

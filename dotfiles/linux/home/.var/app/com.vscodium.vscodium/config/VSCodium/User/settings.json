@@ -24,7 +24,7 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
@@ -48,6 +48,7 @@
   "explorer.confirmDragAndDrop": false,
   // * Telemetry Settings
   "redhat.telemetry.enabled": true,
+  // * Theming Settings
   "workbench.colorTheme": "Nord",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "material-product-icons"

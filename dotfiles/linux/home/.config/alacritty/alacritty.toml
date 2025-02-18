@@ -1,6 +1,6 @@
 import = ["~/.config/alacritty/nord.toml"]
 
-shell = "bash"
+shell = "fish"
 
 working_directory = "None"
 live_config_reload = true

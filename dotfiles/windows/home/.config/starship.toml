@@ -13,11 +13,11 @@ $time\
 # Disable the blank line at the start of the prompt
 add_newline = true
 
-[colors]
-nord3 = "#4C566A"
-nord7 = "#8FBCBB"
-nord9 = "#81A1C1"
-nord10 = "#5E81AC"
+# [colors]
+# nord3 = "#4C566A"
+# nord7 = "#8FBCBB"
+# nord9 = "#81A1C1"
+# nord10 = "#5E81AC"
 
 [username]
 show_always = true
@@ -44,6 +44,6 @@ format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
+time_format = "%R"           # Hour:Minute Format
 style = "bg:#5E81AC"
 format = '[ $time ]($style)'

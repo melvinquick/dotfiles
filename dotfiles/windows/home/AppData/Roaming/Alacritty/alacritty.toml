@@ -1,6 +1,8 @@
-import = ["~/appdata/roaming/alacritty/dracula.toml"]
+import = ["~/appdata/roaming/alacritty/nord.toml"]
 
-shell = { program = "C:/Program Files/PowerShell/7/pwsh.exe", args = ["-NoLogo",] }
+shell = { program = "C:/Program Files/PowerShell/7/pwsh.exe", args = [
+    "-NoLogo",
+] }
 
 working_directory = "None"
 live_config_reload = true

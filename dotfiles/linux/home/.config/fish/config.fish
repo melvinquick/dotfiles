@@ -9,8 +9,5 @@ set fish_greeting
 # * Fastfetch Call
 fastfetch --config ~/.config/fastfetch/fastfetch.jsonc
 
-# * FZF Better Support
-fzf --fish | source
-
 # * Starship Eval
 starship init fish | source

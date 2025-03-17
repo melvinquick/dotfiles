@@ -13,7 +13,7 @@ alias upgrade upgrade_system
 alias osupgrade upgrade_release
 alias weather "weather_checker Clearfield Pennsylvania"
 alias cat "batcat --color=always"
-alia ls "ls -la"
+alias ls "ls -la"
 
 # * Disable the Fish Interactive Shell Greeting Message
 set fish_greeting

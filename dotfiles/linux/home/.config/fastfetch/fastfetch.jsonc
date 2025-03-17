@@ -6,7 +6,7 @@
   "modules": [
     {
       "type": "custom", // HardwareStart
-      "format": "┌─────────────── \u001b[1mHardware Information\u001b[0m ───────────────┐"
+      "format": "┌────────────── \u001b[1mHardware Information\u001b[0m ──────────────┐"
     },
     {
       "type": "cpu",
@@ -25,21 +25,13 @@
       "key": "  󰍹"
     },
     {
-      "type": "sound",
-      "key": "  "
-    },
-    {
-      "type": "gamepad",
-      "key": "  "
-    },
-    {
       "type": "custom", // SoftwareStart
-      "format": "├─────────────── \u001b[1mSoftware Information\u001b[0m ───────────────┤"
+      "format": "├────────────── \u001b[1mSoftware Information\u001b[0m ──────────────┤"
     },
     {
       "type": "title",
       "key": "  ",
-      "format": "{1}@{2}"
+      "format": "{1}"
     },
     {
       "type": "os",
@@ -52,10 +44,6 @@
     {
       "type": "terminal",
       "key": "  "
-    },
-    {
-      "type": "theme",
-      "key": "  󰉼"
     },
     {
       "type": "uptime",
@@ -72,7 +60,7 @@
     },
     {
       "type": "custom", // InformationEnd
-      "format": "└────────────────────────────────────────────────────┘"
+      "format": "└──────────────────────────────────────────────────┘"
     },
     {
       "type": "colors",

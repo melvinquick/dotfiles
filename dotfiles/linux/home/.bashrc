@@ -61,7 +61,7 @@ upgrade_release() { # * Upgrade your current release to whatever the most recent
 }
 
 upgrade_snaps() { # * Refresh (upgrade) snaps on your system in case the auto-upgrade isn't working
-    snap refresh
+    sudo snap refresh
 }
 
 upgrade_system() { # * Run a full update process including System Apps (Nala), Snaps, Flatpaks, and AppImages

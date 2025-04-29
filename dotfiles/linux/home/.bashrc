@@ -49,11 +49,13 @@ upgrade_appimages() { # * Repeatedly upgrade appimages using the AM manager (if 
 }
 
 upgrade_apps() { # * Use nala to upgrade system apps and autoremove apps / fix broken apps
-    sudo nala full-upgrade --assume-yes && sudo nala autoremove --purge --config --assume-yes --fix-broken && sudo nala clean
+    sudo apt modernize-sources -y && sudo nala full-upgrade --assume-yes && sudo nala autoremove --purge --config --assume-yes --fix-broken && sudo nala clean
 }
 
 upgrade_flatpaks() { # * Upgrade all flatpaks on your system
+    flatpak uninstall --unused
     flatpak update --assumeyes
+    flatpak uninstall --unused
 }
 
 upgrade_release() { # * Upgrade your current release to whatever the most recent stable release your settings allow

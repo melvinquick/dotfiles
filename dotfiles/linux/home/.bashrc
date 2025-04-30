@@ -20,19 +20,19 @@ fuzzy_bat() { # * Combines fzf with batcat for better previewing of files before
     fzf --preview 'batcat --color=always {}'
 }
 
-package_count() { # * Gives you a total system package count (via nala)
-    nala list -i | grep 'is installed$' -B 1 | grep -v 'is installed$' | sed 's/^[ \t]*//' | sed 's/ .*$//' | grep -v '^--$' | wc -l
+package_count() { # * Gives you a total system package count (via pacman)
+    pacman -Q | wc -l
 }
 
 python_version() { # * Quickly get current Python version in use on your system / venv
-    python3 --version
+    python --version
 }
 
 search_installed_programs() { # * Pass a keyword to find any programs containing that keyword installed on your system
     if [ -z "$1" ]; then
-        echo "You need to provide a keyword to search for! e.g., search_installed_programs kubuntu"
+        echo "You need to provide a keyword to search for! e.g., search_installed_programs plasma"
     else
-        nala search "$1" -i | grep 'is installed$' -B 1 | grep -v 'is installed$' | sed 's/^[ \t]*//' | sed 's/ .*$//' | grep -v '^--$' | grep "$1" | awk '{print $1}'
+        pacman -Qs $1 | grep -e "core/" -e "extra/" -e "community/" -e "multilib/" -e "testing/" -e "staging/" -e "aur/" -e "local/"
     fi
 }
 
@@ -40,7 +40,7 @@ search_repo_programs() { # * Pass a keyword to find any programs containing that
     if [ -z "$1" ]; then
         echo "You need to provide a keyword to search for! e.g., search_installed_programs kubuntu"
     else
-        nala search $1 | sed 's/^[ \t]*//' | sed 's/ .*$//' | grep -v '^--$' | grep $1 | awk '{print $1}'
+        pacman -Ss $1 | grep -e "core/" -e "extra/" -e "community/" -e "multilib/" -e "testing/" -e "staging/" -e "aur/" -e "local/"
     fi
 }
 
@@ -48,26 +48,17 @@ upgrade_appimages() { # * Repeatedly upgrade appimages using the AM manager (if 
     am -u && am -c
 }
 
-upgrade_apps() { # * Use nala to upgrade system apps and autoremove apps / fix broken apps
-    sudo apt modernize-sources -y && sudo nala full-upgrade --assume-yes && sudo nala autoremove --purge --config --assume-yes --fix-broken && sudo nala clean
+upgrade_apps() { # * Use pacman to upgrade system apps and autoremove apps / fix broken apps
+    sudo pacman -Syu && sudo pacman -Sc --noconfirm
 }
 
 upgrade_flatpaks() { # * Upgrade all flatpaks on your system
-    flatpak uninstall --unused
     flatpak update --assumeyes
     flatpak uninstall --unused
 }
 
-upgrade_release() { # * Upgrade your current release to whatever the most recent stable release your settings allow
-    sudo do-release-upgrade
-}
-
-upgrade_snaps() { # * Refresh (upgrade) snaps on your system in case the auto-upgrade isn't working
-    sudo snap refresh
-}
-
-upgrade_system() { # * Run a full update process including System Apps (Nala), Snaps, Flatpaks, and AppImages
-    upgrade_apps && upgrade_snaps && upgrade_flatpaks && upgrade_appimages
+upgrade_system() { # * Run a full update process including System Apps (pacman), flatpaks, and appimages
+    upgrade_apps && upgrade_flatpaks && upgrade_appimages
 }
 
 weather_checker() { # * Quickly get your local weather in your terminal using wttr.in
@@ -87,7 +78,6 @@ alias clear='better_clear'
 alias fzb='fuzzy_bat'
 alias pyver='python_version'
 alias upgrade='upgrade_system'
-alias osupgrade='upgrade_release'
 alias weather='weather_checker Clearfield Pennsylvania'
 alias cat='batcat --color=always'
 alias ls='command ls -la'

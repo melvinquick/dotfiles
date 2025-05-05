@@ -49,7 +49,7 @@ upgrade_appimages() { # * Repeatedly upgrade appimages using the AM manager (if 
 }
 
 upgrade_apps() { # * Use pacman to upgrade system apps and autoremove apps / fix broken apps
-    sudo pacman -Syu && sudo pacman -Sc --noconfirm
+    sudo pacman -Syu --noconfirm && sudo pacman -Sc --noconfirm
 }
 
 upgrade_flatpaks() { # * Upgrade all flatpaks on your system

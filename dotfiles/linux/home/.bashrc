@@ -54,7 +54,7 @@ upgrade_apps() { # * Use pacman to upgrade system apps and autoremove apps / fix
 
 upgrade_flatpaks() { # * Upgrade all flatpaks on your system
     flatpak update --assumeyes
-    flatpak uninstall --unused
+    flatpak uninstall --unused --assumeyes
 }
 
 upgrade_system() { # * Run a full update process including System Apps (pacman), flatpaks, and appimages

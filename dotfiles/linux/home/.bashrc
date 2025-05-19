@@ -17,7 +17,7 @@ better_clear() { # * Upgraded clear command that will re-source your fish config
 }
 
 fuzzy_bat() { # * Combines fzf with batcat for better previewing of files before selection
-    fzf --preview 'batcat --color=always {}'
+    fzf --preview 'bat --color=always {}'
 }
 
 package_count() { # * Gives you a total system package count (via pacman)
@@ -79,7 +79,7 @@ alias fzb='fuzzy_bat'
 alias pyver='python_version'
 alias upgrade='upgrade_system'
 alias weather='weather_checker Clearfield Pennsylvania'
-alias cat='batcat --color=always'
+alias cat='bat --color=always'
 alias ls='command ls -la'
 
 # * Fastfetch Call

@@ -89,6 +89,7 @@
     "interval": 3600,
     "exec": "checkupdates | wc -l || 0",
     "exec-if": "exit 0",
-    "on-click": "checkupdates | wc -l || 0"
+    "on-click": "checkupdates | wc -l || 0",
+    "tooltip": false
   }
 }

@@ -76,13 +76,14 @@
     "all-outputs": true,
     "warp-on-scroll": false,
     "persistent-workspaces": {
-      "*": [1, 2, 3]
+      "*": [1, 2, 3, 4]
     },
     "format": "{icon}",
     "format-icons": {
       "1": "󰊯",
       "2": "󰍥",
-      "3": "󰅪"
+      "3": "󰅪",
+      "4": ""
     }
   },
 

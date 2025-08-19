@@ -28,24 +28,25 @@ python_version() { # * Quickly get current Python version in use on your system 
     python --version
 }
 
-reboot_pending_check() {
+reboot_pending_check() { # * This will check to see if the kernel version that's active is the current version on the system
+    if [ -z "$verbose" ]; then
+        verbose=false
+    else
+        verbose=true
+    fi
+
     active_kernel=$(uname -r | sed 's/\./-/g')
     current_kernel=$(sip kernel | grep "linux " | awk '{print $2}' | sed 's/\./-/g')
 
     if [ "$active_kernel" != "$current_kernel" ]; then
         echo "REBOOT REQUIRED"
-        echo
-        read -p "Would you like to see the active and current kernel versions (y/n)?: " user_input
-        if [ "$user_input" = "y" ]; then
-            echo
+        if [ "$verbose" = "true" ]; then
             echo "Active Kernel: $active_kernel"
             echo "Current Kernel: $current_kernel"
         fi
     else
         echo "REBOOT NOT REQUIRED"
-        read -p "Would you like to see the active kernel version (y/n)?: " user_input
-        if [ "$user_input" = "y" ]; then
-            echo
+        if [ "$verbose" = "true" ]; then
             echo "Active Kernel: $active_kernel"
         fi
     fi

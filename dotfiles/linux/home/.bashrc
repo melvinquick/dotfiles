@@ -28,6 +28,29 @@ python_version() { # * Quickly get current Python version in use on your system 
     python --version
 }
 
+reboot_pending_check() {
+    active_kernel=$(uname -r | sed 's/\./-/g')
+    current_kernel=$(sip kernel | grep "linux " | awk '{print $2}' | sed 's/\./-/g')
+
+    if [ "$active_kernel" != "$current_kernel" ]; then
+        echo "REBOOT REQUIRED"
+        echo
+        read -p "Would you like to see the active and current kernel versions (y/n)?: " user_input
+        if [ "$user_input" = "y" ]; then
+            echo
+            echo "Active Kernel: $active_kernel"
+            echo "Current Kernel: $current_kernel"
+        fi
+    else
+        echo "REBOOT NOT REQUIRED"
+        read -p "Would you like to see the active kernel version (y/n)?: " user_input
+        if [ "$user_input" = "y" ]; then
+            echo
+            echo "Active Kernel: $active_kernel"
+        fi
+    fi
+}
+
 search_installed_programs() { # * Pass a keyword to find any programs containing that keyword installed on your system
     if [ -z "$1" ]; then
         echo "You need to provide a keyword to search for! e.g., search_installed_programs plasma"
@@ -81,6 +104,7 @@ alias upgrade='upgrade_system'
 alias weather='weather_checker Clearfield Pennsylvania'
 alias cat='bat --color=always'
 alias ls='command ls -la'
+alias rpc='reboot_pending_check'
 
 # * Fastfetch Call
 fastfetch --config ~/.config/fastfetch/fastfetch.jsonc

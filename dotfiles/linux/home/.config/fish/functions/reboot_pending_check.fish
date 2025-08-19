@@ -1,6 +1,6 @@
 function reboot_pending_check
-    set active_kernel (uname -r)
-    set current_kernel (sip kernel | grep "linux " | awk '{print $2}')
+    set active_kernel (uname -r | sed 's/\./-/g')
+    set current_kernel (sip kernel | grep "linux " | awk '{print $2}' | sed 's/\./-/g')
     if test $active_kernel != $current_kernel
         echo "REBOOT REQUIRED"
         echo

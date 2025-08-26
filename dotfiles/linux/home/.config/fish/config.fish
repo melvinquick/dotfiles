@@ -14,6 +14,7 @@ alias weather "weather_checker Clearfield Pennsylvania"
 alias cat "bat --color=always"
 alias ls "command ls -la"
 alias rpc reboot_pending_check
+alias dockup docker_upgrade
 
 # * Disable the Fish Interactive Shell Greeting Message
 set fish_greeting

@@ -16,6 +16,23 @@ better_clear() { # * Upgraded clear command that will re-source your fish config
     command clear && source ~/.bashrc
 }
 
+docker_upgrade() { # * While in a directory with a Docker Compose YAML file, running this function will run a pull and restart the container if a new image was found
+    old_image_count=$(docker image ls | wc -l)
+
+    docker compose pull >/dev/null 2>&1 && docker compose up -d >/dev/null 2>&1
+
+    new_image_count=$(docker image ls | wc -l)
+
+    if [ "$old_image_count" != "$new_image_count" ]; then
+        echo "This container has been updated!"
+    else
+        echo "This container is already up to date!"
+    fi
+
+    docker image prune -af >/dev/null 2>&1
+}
+
+
 fuzzy_bat() { # * Combines fzf with batcat for better previewing of files before selection
     fzf --preview 'bat --color=always {}'
 }
@@ -100,6 +117,7 @@ alias weather='weather_checker Clearfield Pennsylvania'
 alias cat='bat --color=always'
 alias ls='command ls -la'
 alias rpc='reboot_pending_check'
+alias dockup='docker_upgrade'
 
 # * Fastfetch Call
 fastfetch --config ~/.config/fastfetch/fastfetch.jsonc

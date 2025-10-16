@@ -83,6 +83,10 @@ upgrade_appimages() { # * Repeatedly upgrade appimages using the AM manager (if 
     am -u && am -c
 }
 
+upgrade_apps_aur() { # * Use yay to upgrade system apps and autoremove apps / fix broken apps
+    yay -Syu --noconfirm && yay -Sc --noconfirm
+}
+
 upgrade_apps() { # * Use pacman to upgrade system apps and autoremove apps / fix broken apps
     sudo pacman -Syu --noconfirm && sudo pacman -Sc --noconfirm
 }
@@ -93,7 +97,7 @@ upgrade_flatpaks() { # * Upgrade all flatpaks on your system
 }
 
 upgrade_system() { # * Run a full update process including System Apps (pacman), flatpaks, and appimages
-    upgrade_apps && upgrade_flatpaks && upgrade_appimages
+    upgrade_apps && upgrade_apps_aur && upgrade_flatpaks && upgrade_appimages
 }
 
 weather_checker() { # * Quickly get your local weather in your terminal using wttr.in

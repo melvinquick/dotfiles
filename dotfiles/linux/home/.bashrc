@@ -37,8 +37,8 @@ fuzzy_bat() { # * Combines fzf with batcat for better previewing of files before
     fzf --preview 'bat --color=always {}'
 }
 
-package_count() { # * Gives you a total system package count (via pacman)
-    pacman -Q | wc -l
+package_count() { # * Gives you a total system package count (via yay)
+    yay -Q | wc -l
 }
 
 python_version() { # * Quickly get current Python version in use on your system / venv
@@ -65,17 +65,27 @@ reboot_pending_check() { # * This will check to see if the kernel version that's
 
 search_installed_programs() { # * Pass a keyword to find any programs containing that keyword installed on your system
     if [ -z "$1" ]; then
-        echo "You need to provide a keyword to search for! e.g., search_installed_programs plasma"
+        echo "You need to provide a keyword to search for! e.g., search_installed_programs fish"
     else
-        pacman -Qs $1 | grep -e "core/" -e "extra/" -e "community/" -e "multilib/" -e "testing/" -e "staging/" -e "aur/" -e "local/"
+        yay -Qs $1 | grep -e "core/" -e "extra/" -e "community/" -e "multilib/" -e "testing/" -e "staging/" -e "aur/" -e "local/"
+
+        found_programs=$(yay -Qs $1)
+        if [ -z "$found_programs" ]; then
+            echo "No programs found on the system containing the keyword '$1'"
+        fi
     fi
 }
 
 search_repo_programs() { # * Pass a keyword to find any programs containing that keyword in the repositories
     if [ -z "$1" ]; then
-        echo "You need to provide a keyword to search for! e.g., search_installed_programs kubuntu"
+        echo "You need to provide a keyword to search for! e.g., search_installed_programs fish"
     else
-        pacman -Ss $1 | grep -e "core/" -e "extra/" -e "community/" -e "multilib/" -e "testing/" -e "staging/" -e "aur/" -e "local/"
+        yay -Ss $1 | grep -e "core/" -e "extra/" -e "community/" -e "multilib/" -e "testing/" -e "staging/" -e "aur/" -e "local/"
+
+        found_programs=$(yay -Ss $1)
+        if [ -z "$found_programs" ]; then
+            echo "No programs found in the Standard Repositories, Chaotic AUR, or AUR containing the keyword '$1'"
+        fi
     fi
 }
 

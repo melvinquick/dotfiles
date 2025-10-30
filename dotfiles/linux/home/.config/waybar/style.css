@@ -5,71 +5,27 @@
   border-radius: 6px;
   padding: 1px 5px 1px 5px;
   font-family: FiraCode Nerd Font;
-  font-size: 13px;
+  font-size: 14px;
 }
 window#waybar {
   background-color: @dark1;
   color: @white2;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-}
-button {
-  box-shadow: inset 0 -3px transparent;
-  border: none;
 }
 button:hover {
-  background: inherit;
-  box-shadow: inset 0 -3px #ffffff;
-}
-#clock {
-  background-color: @deeparcticocean;
-}
-#battery {
-  background-color: @dark4;
-}
-#battery.charging,
-#battery.plugged {
-  background-color: @green;
-}
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-  }
-}
-#battery.critical:not(.charging) {
-  background-color: @red;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-#pulseaudio {
-  background-color: @clearice;
-}
-#pulseaudio.muted {
-  background-color: @dark3;
-}
-#custom-checkupdates {
-  background-color: @frozenpolarwater;
-}
-#custom-power {
-  background-color: @red;
-  padding: 0px 8px 0px 5px;
-}
-#network {
-  background-color: @arcticwaters;
-}
-#network.disconnected {
-  background-color: @red;
-}
-#workspaces button {
-  background-color: transparent;
-}
-#workspaces button.active {
-  background-color: @dark4;
-  box-shadow: inset 0 -3px @white1;
+  background: @deeparcticocean;
 }
 #workspaces button.visible {
-  background-color: @dark4;
+  background-color: @deeparcticocean;
+}
+#custom-checkupdates {
+  color: @clearice;
+}
+#pulseaudio {
+  color: @arcticwaters;
+}
+#pulseaudio.muted {
+  color: @dark3;
+}
+#clock {
+  color: @deeparcticocean;
 }

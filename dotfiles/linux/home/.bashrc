@@ -17,11 +17,11 @@ better_clear() { # * Upgraded clear command that will re-source your fish config
 }
 
 docker_upgrade() { # * While in a directory with a Docker Compose YAML file, running this function will run a pull and restart the container if a new image was found
-    old_image_count=$(docker image ls | wc -l)
+    old_image_count=$(docker image ls --format table | wc -l)
 
     docker compose pull >/dev/null 2>&1 && docker compose up -d >/dev/null 2>&1
 
-    new_image_count=$(docker image ls | wc -l)
+    new_image_count=$(docker image ls --format table | wc -l)
 
     if [ "$old_image_count" != "$new_image_count" ]; then
         echo "This container has been updated!"
@@ -31,7 +31,6 @@ docker_upgrade() { # * While in a directory with a Docker Compose YAML file, run
 
     docker image prune -af >/dev/null 2>&1
 }
-
 
 fuzzy_bat() { # * Combines fzf with batcat for better previewing of files before selection
     fzf --preview 'bat --color=always {}'

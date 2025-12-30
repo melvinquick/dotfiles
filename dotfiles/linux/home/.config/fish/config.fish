@@ -15,6 +15,7 @@ alias cat "bat --color=always"
 alias ls "command ls -la"
 alias rpc reboot_pending_check
 alias dockup docker_upgrade
+alias reboot "sudo reboot now"
 
 # * Disable the Fish Interactive Shell Greeting Message
 set fish_greeting

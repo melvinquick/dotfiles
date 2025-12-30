@@ -131,6 +131,7 @@ alias cat='bat --color=always'
 alias ls='command ls -la'
 alias rpc='reboot_pending_check'
 alias dockup='docker_upgrade'
+alias reboot='sudo reboot now'
 
 # * Fastfetch Call
 fastfetch --config ~/.config/fastfetch/fastfetch.jsonc

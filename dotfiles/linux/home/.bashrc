@@ -132,6 +132,7 @@ alias ls='command ls -la'
 alias rpc='reboot_pending_check'
 alias dockup='docker_upgrade'
 alias reboot='sudo reboot now'
+alias shutdown='sudo shutdown now'
 
 # * Fastfetch Call
 fastfetch --config ~/.config/fastfetch/fastfetch.jsonc

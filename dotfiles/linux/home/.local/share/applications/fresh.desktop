@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Fresh
-Comment=A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins.
-Exec=alacritty --command fresh
-Icon=/home/melvinquick/.config/fresh/fresh_logo.png
-Terminal=false
-Categories=Editor;

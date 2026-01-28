@@ -17,6 +17,7 @@ alias rpc reboot_pending_check
 alias dockup docker_upgrade
 alias reboot "sudo reboot now"
 alias shutdown "sudo shutdown now"
+alias cpc "sudo find /var/cache/pacman/pkg -maxdepth 1 -type f -name 'download-*' -exec rm -f {} +"
 
 # * Disable the Fish Interactive Shell Greeting Message
 set fish_greeting

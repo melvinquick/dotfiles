@@ -106,7 +106,7 @@ upgrade_flatpaks() { # * Upgrade all flatpaks on your system
 }
 
 upgrade_system() { # * Run a full update process including System Apps (pacman), flatpaks, and appimages
-    upgrade_apps && upgrade_apps_aur && upgrade_flatpaks && upgrade_appimages
+    cpc && upgrade_apps && upgrade_apps_aur && upgrade_flatpaks && upgrade_appimages
 }
 
 weather_checker() { # * Quickly get your local weather in your terminal using wttr.in
@@ -133,6 +133,7 @@ alias rpc='reboot_pending_check'
 alias dockup='docker_upgrade'
 alias reboot='sudo reboot now'
 alias shutdown='sudo shutdown now'
+alias cpc='sudo find /var/cache/pacman/pkg -maxdepth 1 -type f -name 'download-*' -exec rm -f {} +'
 
 # * Fastfetch Call
 fastfetch --config ~/.config/fastfetch/fastfetch.jsonc

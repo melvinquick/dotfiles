@@ -1,11 +1,17 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://yalter.github.io/niri/Configuration:-Introduction
+//?###################
+//?# INFORMATIONAL ###
+//?###################
 
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
+// * Author: Melvin quick
+// * Last Updated: 2026-01-28
+// * Notes: This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
+
+//?##########
+//?# WIKI ###
+//?##########
+
+// * https://yalter.github.io/niri/
+
 input {
     keyboard {
         numlock

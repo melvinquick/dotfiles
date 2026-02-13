@@ -89,20 +89,36 @@ search_repo_programs() { # * Pass a keyword to find any programs containing that
 }
 
 upgrade_appimages() { # * Repeatedly upgrade appimages using the AM manager (if already installed)
+    echo --------------------
+    echo '| APPIMAGE UPDATES |'
+    echo --------------------
     am -u && am -c
+    echo
 }
 
 upgrade_apps_aur() { # * Use yay to upgrade system apps and autoremove apps / fix broken apps
+    echo ---------------
+    echo '| YAY UPDATES |'
+    echo ---------------
     yay -Syu --noconfirm && yay -Sc --noconfirm
+    echo
 }
 
 upgrade_apps() { # * Use pacman to upgrade system apps and autoremove apps / fix broken apps
+    echo ------------------
+    echo '| PACMAN UPDATES |'
+    echo ------------------
     sudo pacman -Syu --noconfirm && sudo pacman -Sc --noconfirm
+    echo
 }
 
 upgrade_flatpaks() { # * Upgrade all flatpaks on your system
+    echo -------------------
+    echo '| FLATPAK UPDATES |'
+    echo -------------------
     flatpak update --assumeyes
     flatpak uninstall --unused --assumeyes
+    echo
 }
 
 upgrade_system() { # * Run a full update process including System Apps (pacman), flatpaks, and appimages

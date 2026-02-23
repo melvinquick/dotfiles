@@ -78,9 +78,23 @@
           "textColor": "none",
           "useMonospaceFont": true,
           "usePadding": false
+        },
+        {
+          "clockColor": "none",
+          "customFont": "",
+          "formatHorizontal": "HH:mm ddd, MMM dd",
+          "formatVertical": "HH mm - dd MM",
+          "id": "Clock",
+          "tooltipFormat": "HH:mm ddd, MMM dd",
+          "useCustomFont": false
         }
       ],
       "left": [
+        {
+          "icon": "rocket",
+          "iconColor": "none",
+          "id": "Launcher"
+        },
         {
           "colorizeIcons": false,
           "hideMode": "hidden",
@@ -112,25 +126,6 @@
         }
       ],
       "right": [
-        {
-          "compactMode": false,
-          "compactShowAlbumArt": true,
-          "compactShowVisualizer": false,
-          "hideMode": "hidden",
-          "hideWhenIdle": false,
-          "id": "MediaMini",
-          "maxWidth": 145,
-          "panelShowAlbumArt": true,
-          "panelShowVisualizer": true,
-          "scrollingMode": "hover",
-          "showAlbumArt": true,
-          "showArtistFirst": true,
-          "showProgressRing": true,
-          "showVisualizer": false,
-          "textColor": "none",
-          "useFixedWidth": false,
-          "visualizerType": "linear"
-        },
         {
           "hideWhenZero": false,
           "hideWhenZeroUnread": false,
@@ -170,15 +165,6 @@
           "icon": "noctalia",
           "id": "ControlCenter",
           "useDistroLogo": false
-        },
-        {
-          "clockColor": "none",
-          "customFont": "",
-          "formatHorizontal": "HH:mm ddd, MMM dd",
-          "formatVertical": "HH mm - dd MM",
-          "id": "Clock",
-          "tooltipFormat": "HH:mm ddd, MMM dd",
-          "useCustomFont": false
         }
       ]
     }

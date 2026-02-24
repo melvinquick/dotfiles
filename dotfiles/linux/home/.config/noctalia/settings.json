@@ -82,10 +82,10 @@
         {
           "clockColor": "none",
           "customFont": "",
-          "formatHorizontal": "HH:mm ddd, MMM dd",
-          "formatVertical": "HH mm - dd MM",
+          "formatHorizontal": "hh:mm:ss AP | yyyy-MM-dd",
+          "formatVertical": "hh mm AP - yyyy MM dd",
           "id": "Clock",
-          "tooltipFormat": "HH:mm ddd, MMM dd",
+          "tooltipFormat": "hh:mm:ss AP | yyyy-MM-dd",
           "useCustomFont": false
         }
       ],
@@ -96,14 +96,8 @@
           "id": "Launcher"
         },
         {
-          "colorizeIcons": false,
-          "hideMode": "hidden",
-          "id": "ActiveWindow",
-          "maxWidth": 145,
-          "scrollingMode": "hover",
-          "showIcon": true,
-          "textColor": "none",
-          "useFixedWidth": false
+          "iconColor": "none",
+          "id": "DarkMode"
         },
         {
           "characterCount": 2,
@@ -191,7 +185,7 @@
     ]
   },
   "colorSchemes": {
-    "darkMode": true,
+    "darkMode": false,
     "generationMethod": "tonal-spot",
     "manualSunrise": "06:30",
     "manualSunset": "18:30",

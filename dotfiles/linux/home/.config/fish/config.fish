@@ -12,7 +12,7 @@ alias pyver python_version
 alias upgrade upgrade_system
 alias weather "weather_checker Clearfield Pennsylvania"
 alias cat "bat --color=always"
-alias ls "command ls -la"
+alias ls "eza -lh --icons=always"
 alias rpc reboot_pending_check
 alias dockup docker_upgrade
 alias reboot "sudo reboot now"

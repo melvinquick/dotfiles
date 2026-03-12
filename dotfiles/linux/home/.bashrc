@@ -17,22 +17,22 @@ better_clear() { # * Upgraded clear command that will re-source your fish config
 }
 
 docker_upgrade() { # * While in a directory with a Docker Compose YAML file, running this function will run a pull and restart the container if a new image was found
-    old_image_count=$(docker image ls --format table | wc -l)
+    old_images=$(docker compose images -q)
 
     docker compose pull >/dev/null 2>&1 && docker compose up -d >/dev/null 2>&1
 
-    new_image_count=$(docker image ls --format table | wc -l)
+    docker image prune -af >/dev/null 2>&1
+
+    new_images=$(docker compose images -q)
 
     if [ "$old_image_count" != "$new_image_count" ]; then
         echo "This container has been updated!"
     else
         echo "This container is already up to date!"
     fi
-
-    docker image prune -af >/dev/null 2>&1
 }
 
-fuzzy_bat() { # * Combines fzf with batcat for better previewing of files before selection
+fuzzy_bat() { # * Combines fzf with bat for better previewing of files before selection
     fzf --preview 'bat --color=always {}'
 }
 
@@ -144,7 +144,7 @@ alias pyver='python_version'
 alias upgrade='upgrade_system'
 alias weather='weather_checker Clearfield Pennsylvania'
 alias cat='bat --color=always'
-alias ls='command ls -la'
+alias ls='eza -lh --icons=always'
 alias rpc='reboot_pending_check'
 alias dockup='docker_upgrade'
 alias reboot='sudo reboot now'

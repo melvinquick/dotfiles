@@ -1,8 +1,8 @@
 {
   "appLauncher": {
     "autoPasteClipboard": false,
-    "clipboardWatchImageCommand": "wl-paste --type image --watch clipvault store",
-    "clipboardWatchTextCommand": "wl-paste --type text --watch clipvault store",
+    "clipboardWatchImageCommand": "wl-paste --type image --watch cliphist store",
+    "clipboardWatchTextCommand": "wl-paste --type text --watch cliphist store",
     "clipboardWrapText": true,
     "customLaunchPrefix": "",
     "customLaunchPrefixEnabled": false,
@@ -30,6 +30,7 @@
     "mprisBlacklist": [],
     "preferredPlayer": "",
     "spectrumFrameRate": 30,
+    "spectrumMirrored": true,
     "visualizerType": "linear",
     "volumeFeedback": false,
     "volumeFeedbackSoundFile": "",
@@ -47,7 +48,6 @@
     "density": "default",
     "displayMode": "always_visible",
     "enableExclusionZoneInset": true,
-    "floating": true,
     "fontScale": 1,
     "frameRadius": 12,
     "frameThickness": 8,
@@ -110,7 +110,7 @@
         {
           "colorizeSystemIcon": "none",
           "customIconPath": "",
-          "enableColorization": false,
+          "enableColorization": true,
           "icon": "rocket",
           "iconColor": "none",
           "id": "Launcher",
@@ -413,8 +413,7 @@
     "bluetoothRssiPollingEnabled": false,
     "disableDiscoverability": false,
     "networkPanelView": "wifi",
-    "wifiDetailsViewMode": "grid",
-    "wifiEnabled": true
+    "wifiDetailsViewMode": "grid"
   },
   "nightLight": {
     "autoSchedule": true,
@@ -605,6 +604,7 @@
       "pixelate",
       "honeycomb"
     ],
+    "useOriginalImages": false,
     "useSolidColor": false,
     "useWallhaven": false,
     "viewMode": "single",

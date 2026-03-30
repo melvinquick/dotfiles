@@ -122,7 +122,7 @@ upgrade_flatpaks() { # * Upgrade all flatpaks on your system
 }
 
 upgrade_system() { # * Run a full update process including System Apps (pacman), flatpaks, and appimages
-    cpc && upgrade_apps && upgrade_apps_aur && upgrade_flatpaks && upgrade_appimages
+    cpc && upgrade_apps && upgrade_apps_aur && upgrade_flatpaks && upgrade_appimages && rpc
 }
 
 weather_checker() { # * Quickly get your local weather in your terminal using wttr.in

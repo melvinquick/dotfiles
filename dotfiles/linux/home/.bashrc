@@ -22,7 +22,8 @@ docker_upgrade() { # * While in a directory with a Docker Compose YAML file, run
     docker compose pull >/dev/null 2>&1 && docker compose down >/dev/null 2>&1 && docker compose up -d >/dev/null 2>&1 && docker image prune -af >/dev/null 2>&1
 
     if [ "$container_name" == "nextcloud" ]; then
-        docker compose exec -u www-data app php occ upgrade
+        sleep 5
+        docker compose exec -u www-data app php occ upgrade >/dev/null 2>&1
     fi
 
     echo 'The container upgrade process is complete!'

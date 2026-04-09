@@ -8,6 +8,7 @@ function docker_upgrade -d "While in a directory with a Docker Compose YAML file
         sleep 5
         docker compose exec -u www-data app php occ upgrade >/dev/null 2>&1
         docker compose exec -u www-data app php occ db:add-missing-indices >/dev/null 2>&1
+        docker compose exec -u www-data app php occ maintenance:repair --include-expensive >/dev/null 2>&1
     end
 
     echo 'The container upgrade process is complete!'

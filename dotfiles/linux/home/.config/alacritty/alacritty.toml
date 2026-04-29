@@ -34,4 +34,4 @@ import = ["~/.config/alacritty/nord.toml"]
 
 [terminal]
 
-shell = "fish"
+shell = "nu"

@@ -154,8 +154,7 @@ def weather_checker [city: string = "", state: string = ""] {
 #?# ALIASES ###
 #?#############
 
-alias clear = better_clear
-alias fastfetch = ^fastfetch --config ~/.config/fastfetch/fastfetch.jsonc
+alias ff = ^fastfetch --config ~/.config/fastfetch/fastfetch.jsonc
 alias cat = bat --color=always {}
 alias pyver = python --version
 alias reboot = sudo reboot now

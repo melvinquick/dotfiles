@@ -65,17 +65,24 @@ def package_count [] {
     yay -Q | wc -l
 }
 
-def reboot_pending_check [] {
+def reboot_pending_check [
+    --verbose (-v) # Display the Active and Current Kernel information currently in use
+] {
     let active_kernel: string = uname | get kernel-release | sed 's/\./-/g'
     let current_kernel: string = yay -Qs kernel | grep "linux " | awk '{print $2}' | sed 's/\./-/g'
 
     if $active_kernel != $current_kernel {
         print "REBOOT REQUIRED"
+        if $verbose {
         print "Active Kernel: " $active_kernel --no-newline
         print "\nCurrent Kernel: " $current_kernel --no-newline
+        }
     } else {
         print "REBOOT NOT REQUIRED"
+        if $verbose {
         print "Active Kernel: " $active_kernel --no-newline
+            print "\nCurrent Kernel: " $current_kernel --no-newline
+        }
     }
 }
 def search_installed_programs [keyword: string = ""] {

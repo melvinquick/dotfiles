@@ -85,7 +85,9 @@ def reboot_pending_check [
         }
     }
 }
-def search_installed_programs [keyword: string = ""] {
+def search_installed_programs [
+    --keyword (-k): string = "" # Pass a keyword to search your installed applications for
+    ] {
     if $keyword == "" {
         print "You need to provide a keyword to search for! e.g., search_installed_programs nushell"
     } else {
@@ -99,7 +101,9 @@ def search_installed_programs [keyword: string = ""] {
     }
 }
 
-def search_repo_programs [keyword: string = ""] {
+def search_repo_programs [
+    --keyword (-k): string = "" # Pass a keyword to search the remote repositories for
+    ] {
     if $keyword == "" {
         print "You need to provide a keyword to search for! e.g., search_installed_programs nushell"
     } else {

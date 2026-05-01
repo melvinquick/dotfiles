@@ -74,13 +74,13 @@ def reboot_pending_check [
     if $active_kernel != $current_kernel {
         print "REBOOT REQUIRED"
         if $verbose {
-        print "Active Kernel: " $active_kernel --no-newline
-        print "\nCurrent Kernel: " $current_kernel --no-newline
+            print "Active Kernel: " $active_kernel --no-newline
+            print "\nCurrent Kernel: " $current_kernel --no-newline
         }
     } else {
         print "REBOOT NOT REQUIRED"
         if $verbose {
-        print "Active Kernel: " $active_kernel --no-newline
+            print "Active Kernel: " $active_kernel --no-newline
             print "\nCurrent Kernel: " $current_kernel --no-newline
         }
     }

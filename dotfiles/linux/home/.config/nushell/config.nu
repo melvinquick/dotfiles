@@ -169,7 +169,6 @@ alias sip = search_installed_programs
 alias srp = search_repo_programs
 alias pc = package_count
 alias hostname = sudo hostnamectl
-alias harbor = ssh melvinquick@192.168.1.102
 
 #?##############
 #?# STARSHIP ###

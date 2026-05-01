@@ -92,7 +92,10 @@ def search_installed_programs [
     if $keyword == "" {
         print "You need to provide a keyword to search for! e.g., search_installed_programs --keyword nushell"
     } else {
-        let keyword_matches: string = (try {yay -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
+        let yay_matches: string = (try {yay -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
+        let flatpak_matches: string = (try {flatpak search $keyword --system | awk -F'\t' '{print $NF "/" $1, $4}'} catch {""})
+        
+        let keyword_matches: string = ([$yay_matches, $flatpak_matches] | str join "\n" | str trim)
 
         if ($keyword_matches | is-empty) {
             print $"No programs found on the system containing the keyword '($keyword)'"
@@ -108,7 +111,10 @@ def search_repo_programs [
     if $keyword == "" {
         print "You need to provide a keyword to search for! e.g., search_repo_programs --keyword nushell"
     } else {
-        let keyword_matches: string = (try {yay -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
+        let yay_matches: string = (try {yay -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
+        let flatpak_matches: string = (try {flatpak search $keyword | awk -F'\t' '{print $NF "/" $1, $4}'} catch {""})
+        
+        let keyword_matches: string = ([$yay_matches, $flatpak_matches] | str join "\n" | str trim)
 
         if ($keyword_matches | is-empty) {
             print $"No programs found in the Standard Repositories, Chaotic AUR, AUR, or Flathub containing the keyword '($keyword)'"

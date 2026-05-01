@@ -85,6 +85,7 @@ def reboot_pending_check [
         }
     }
 }
+
 def search_installed_programs [
     --keyword (-k): string = "" # Pass a keyword to search your installed applications for
     ] {

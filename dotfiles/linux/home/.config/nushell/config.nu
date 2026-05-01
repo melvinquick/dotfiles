@@ -90,7 +90,7 @@ def search_installed_programs [
     --keyword (-k): string = "" # Pass a keyword to search your installed applications for
     ] {
     if $keyword == "" {
-        print "You need to provide a keyword to search for! e.g., search_installed_programs nushell"
+        print "You need to provide a keyword to search for! e.g., search_installed_programs --keyword nushell"
     } else {
         let keyword_matches: string = (try {yay -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
 
@@ -106,7 +106,7 @@ def search_repo_programs [
     --keyword (-k): string = "" # Pass a keyword to search the remote repositories for
     ] {
     if $keyword == "" {
-        print "You need to provide a keyword to search for! e.g., search_installed_programs nushell"
+        print "You need to provide a keyword to search for! e.g., search_repo_programs --keyword nushell"
     } else {
         let keyword_matches: string = (try {yay -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
 

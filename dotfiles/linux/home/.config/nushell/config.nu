@@ -111,7 +111,7 @@ def search_repo_programs [
         let keyword_matches: string = (try {yay -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
 
         if ($keyword_matches | is-empty) {
-            print $"No programs found in the Standard Repositories, Chaotic AUR, or AUR containing the keyword '$program_keyword'"
+            print $"No programs found in the Standard Repositories, Chaotic AUR, AUR, or Flathub containing the keyword '($keyword)'"
         } else {
             print $keyword_matches
         }

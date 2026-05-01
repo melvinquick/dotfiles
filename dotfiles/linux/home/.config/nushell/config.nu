@@ -37,11 +37,6 @@ def bandit_check [] {
     bandit -c bandit.yaml -r .
 }
 
-def better_clear [] {
-    ^clear
-    ^fastfetch --config ~/.config/fastfetch/fastfetch.jsonc
-}
-
 def clear_package_cache [] {
     sudo find /var/cache/pacman/pkg -maxdepth 1 -name 'download-*' -exec rm -rf {} +
 }
@@ -175,12 +170,7 @@ alias sip = search_installed_programs
 alias srp = search_repo_programs
 alias pc = package_count
 alias hostname = sudo hostnamectl
-
-#?###############
-#?# FASTFETCH ###
-#?###############
-
-fastfetch
+alias harbor = ssh melvinquick@192.168.1.102
 
 #?##############
 #?# STARSHIP ###

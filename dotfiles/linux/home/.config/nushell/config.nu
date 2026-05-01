@@ -153,7 +153,10 @@ def upgrade_system [] {
     clear_package_cache; upgrade_apps; upgrade_apps_aur; upgrade_flatpaks; upgrade_appimages; reboot_pending_check
 }
 
-def weather_checker [city: string = "", state: string = ""] {
+def weather [
+    --city (-c): string = "" # Search for weather in this city
+    --state (-s): string = "" # Search for weaher in this state
+    ] {
     if ($city == "") or ($state == "") {
         print "You need to provide the City AND State arguments! e.g., weather Philadelphia Pennsylvania"
     } else {
@@ -173,7 +176,6 @@ alias shutdown = sudo shutdown now
 alias cpc = clear_package_cache
 alias dockup = docker_upgrade
 alias rpc = reboot_pending_check
-alias weather = weather_checker
 alias upgrade = upgrade_system
 alias fzb = fuzzy_bat
 alias sip = search_installed_programs

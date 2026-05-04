@@ -93,9 +93,10 @@ def search_installed_programs [
         print "You need to provide a keyword to search for! e.g., search_installed_programs --keyword nushell"
     } else {
         let yay_matches: string = (try {yay -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
-        let flatpak_matches: string = (try {flatpak search $keyword --system | awk -F'\t' '{print $NF "/" $1, $4}'} catch {""})
-        
-        let keyword_matches: string = ([$yay_matches, $flatpak_matches] | str join "\n" | str trim)
+        let flatpak_matches: string = (try {flatpak list | grep -i $keyword | awk '{print "flathub/" $1}'} catch {""})
+        let am_matches: string = (try {am -f $keyword| lines | where $it =~ '^\s*◆' | where $it =~ $keyword | each { |line| $"am/(($line | str replace --regex '^\s*◆\s*' '' | split row ' : ' | first | str trim))" } | to text | awk '{print $1}'} catch {""})
+
+        let keyword_matches: string = ([$yay_matches, $flatpak_matches, $am_matches] | str join "\n" | str trim)
 
         if ($keyword_matches | is-empty) {
             print $"No programs found on the system containing the keyword '($keyword)'"
@@ -113,8 +114,9 @@ def search_repo_programs [
     } else {
         let yay_matches: string = (try {yay -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
         let flatpak_matches: string = (try {flatpak search $keyword | awk -F'\t' '{print $NF "/" $1, $4}'} catch {""})
+        let am_matches: string = (try {am -q $keyword | lines | where $it =~ '^\s*◆' | each { |line| $"am/(($line | str replace --regex '^\s*◆\s*' '' | split row ' : ' | first | str trim))" } | to text} catch {""})
         
-        let keyword_matches: string = ([$yay_matches, $flatpak_matches] | str join "\n" | str trim)
+        let keyword_matches: string = ([$yay_matches, $flatpak_matches, $am_matches] | str join "\n" | str trim)
 
         if ($keyword_matches | is-empty) {
             print $"No programs found in the Standard Repositories, Chaotic AUR, AUR, or Flathub containing the keyword '($keyword)'"

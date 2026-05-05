@@ -159,7 +159,7 @@ def upgrade_flatpaks [] {
 }
 
 def upgrade_system [] {
-    clear_package_cache; upgrade_apps; upgrade_apps_aur; upgrade_flatpaks; upgrade_appimages; reboot_pending_check
+    clear_package_cache; upgrade_apps; clear_package_cache; upgrade_apps_aur; upgrade_flatpaks; upgrade_appimages; reboot_pending_check
 }
 
 def weather [

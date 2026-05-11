@@ -109,6 +109,7 @@
       "left": [
         {
           "colorizeSystemIcon": "none",
+          "colorizeSystemText": "none",
           "customIconPath": "",
           "enableColorization": true,
           "icon": "rocket",
@@ -177,6 +178,7 @@
         {
           "colorizeDistroLogo": false,
           "colorizeSystemIcon": "none",
+          "colorizeSystemText": "none",
           "customIconPath": "",
           "enableColorization": false,
           "icon": "noctalia",
@@ -216,6 +218,7 @@
     "monitorForColors": "",
     "predefinedScheme": "Nord",
     "schedulingMode": "off",
+    "syncGsettings": true,
     "useWallpaperColors": true
   },
   "controlCenter": {
@@ -322,7 +325,7 @@
     "animationDisabled": false,
     "animationSpeed": 1,
     "autoStartAuth": false,
-    "avatarImage": "/home/melvinquick/google_drive/photos/profile_pictures/melvinquick_001.png",
+    "avatarImage": "/home/melvinquick/Nextcloud/photos/profile_pictures/melvinquick_001.png",
     "boxRadiusRatio": 1,
     "clockFormat": "hh\\nmm",
     "clockStyle": "custom",
@@ -362,6 +365,7 @@
     "showHibernateOnLockScreen": false,
     "showScreenCorners": false,
     "showSessionButtonsOnLockScreen": true,
+    "smoothScrollEnabled": true,
     "telemetryEnabled": true
   },
   "hooks": {
@@ -392,20 +396,21 @@
   },
   "location": {
     "analogClockInCalendar": false,
+    "autoLocate": true,
     "firstDayOfWeek": -1,
     "hideWeatherCityName": false,
     "hideWeatherTimezone": false,
-    "name": "Clearfield, Pennsylvania, United States",
+    "name": "Clearfield",
     "showCalendarEvents": true,
     "showCalendarWeather": true,
     "showWeekNumberInCalendar": false,
     "use12hourFormat": true,
     "useFahrenheit": true,
     "weatherEnabled": true,
-    "weatherShowEffects": true
+    "weatherShowEffects": true,
+    "weatherTaliaMascotAlways": false
   },
   "network": {
-    "airplaneModeEnabled": false,
     "bluetoothAutoConnect": true,
     "bluetoothDetailsViewMode": "grid",
     "bluetoothHideUnnamedDevices": false,
@@ -526,6 +531,13 @@
         "command": "",
         "countdownEnabled": true,
         "enabled": true,
+        "keybind": "7"
+      },
+      {
+        "action": "userspaceReboot",
+        "command": "",
+        "countdownEnabled": true,
+        "enabled": false,
         "keybind": ""
       }
     ],
@@ -583,7 +595,14 @@
     "fillColor": "#000000",
     "fillMode": "crop",
     "hideWallpaperFilenames": false,
-    "monitorDirectories": [],
+    "linkLightAndDarkWallpapers": true,
+    "monitorDirectories": [
+      {
+        "directory": "/home/melvinquick/Pictures/wallpapers",
+        "name": "DP-2",
+        "wallpaper": ""
+      }
+    ],
     "overviewBlur": 0.4,
     "overviewEnabled": false,
     "overviewTint": 0.6,

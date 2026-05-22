@@ -162,6 +162,22 @@ def upgrade_system [] {
     clear_package_cache; upgrade_apps; clear_package_cache; upgrade_apps_aur; upgrade_flatpaks; upgrade_appimages; reboot_pending_check
 }
 
+def upgrade_uv_project_dependencies [] {
+    print "---------------------------------"
+    print "| UPDATING PROJECT DEPENDENCIES |"
+    print "---------------------------------"
+    uv lock --upgrade --color auto
+
+    print "\n"
+    
+    print "--------------------------------"
+    print "| SYNCING PROJECT DEPENDENCIES |"
+    print "--------------------------------"
+    uv sync
+
+    print "\n"
+}
+
 def weather [
     --city (-c): string = "" # Search for weather in this city
     --state (-s): string = "" # Search for weaher in this state
@@ -191,6 +207,7 @@ alias sip = search_installed_programs
 alias srp = search_repo_programs
 alias pc = package_count
 alias hostname = sudo hostnamectl
+alias uvup = upgrade_uv_project_dependencies
 
 #?##############
 #?# STARSHIP ###

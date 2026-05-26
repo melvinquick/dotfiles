@@ -50,6 +50,17 @@ def fuzzy_bat [] {
     fzf --preview 'bat --color=always {}'
 }
 
+def os_install_age [] {
+    let install_date: string = head -n 1 /var/log/pacman.log | awk '{print substr($1,2,10)}'
+    let install_date_datetime: any = $install_date | into datetime
+    let today: any = date now | format date "%Y-%m-%d" | into datetime
+    
+    let os_install_age: int = ($today - $install_date_datetime) / 1day | math floor
+
+    print $"OS Install Date: ($install_date)"
+    print $"OS Age: ($os_install_age) Days"
+}
+
 def package_count [] {
     yay -Q | wc -l
 }

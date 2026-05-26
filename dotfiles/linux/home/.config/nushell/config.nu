@@ -208,6 +208,7 @@ alias srp = search_repo_programs
 alias pc = package_count
 alias hostname = sudo hostnamectl
 alias uvup = upgrade_uv_project_dependencies
+alias osage = os_install_age
 
 #?##############
 #?# STARSHIP ###

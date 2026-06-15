@@ -30,6 +30,10 @@ def clear_package_cache [] {
     sudo find /var/cache/pacman/pkg -maxdepth 1 -name 'download-*' -exec rm -rf {} +
 }
 
+def delete_unused_dependencies [] {
+    sudo pacman -Rns ...(pacman -Qdtq | lines)
+}
+
 def docker_upgrade [] {
     let container_name: string = basename (pwd)
 
@@ -209,6 +213,7 @@ alias pc = package_count
 alias hostname = sudo hostnamectl
 alias uvup = upgrade_uv_project_dependencies
 alias osage = os_install_age
+alias dud = delete_unused_dependencies
 
 #?##############
 #?# STARSHIP ###

@@ -89,6 +89,9 @@ def package_count [] {
 def reboot_pending_check [
     --verbose (-v) # Display the Active and Current Kernel information currently in use
 ] {
+    print "----------------"
+    print "| REBOOT CHECK |"
+    print "----------------"
     let active_kernel: string = uname | get kernel-release | sed 's/\./-/g'
     let current_kernel: string = yay -Qs kernel | grep "linux " | awk '{print $2}' | sed 's/\./-/g'
 

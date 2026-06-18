@@ -54,6 +54,23 @@ def fuzzy_bat [] {
     fzf --preview 'bat --color=always {}'
 }
 
+def list_database_errors [] {
+    print "-------------------"
+    print "| DATABASE ERRORS |"
+    print "-------------------"
+    pacman -Dk
+    print "\n"
+}
+
+def list_foreign_packages [] {
+    print "--------------------"
+    print "| FOREIGN PACKAGES |"
+    print "--------------------"
+    pacman -Qm
+    print "\nBe sure to keep on top of any packages in this output for security reasons! Always read the PKGBUILD!"
+    print "\n"
+}
+
 def os_install_age [] {
     let install_date: string = head -n 1 /var/log/pacman.log | awk '{print substr($1,2,10)}'
     let install_date_datetime: any = $install_date | into datetime
@@ -163,7 +180,7 @@ def upgrade_flatpaks [] {
 }
 
 def upgrade_system [] {
-    clear_package_cache; upgrade_apps; clear_package_cache; upgrade_apps_aur; upgrade_flatpaks; upgrade_appimages; reboot_pending_check
+    clear_package_cache; upgrade_apps; clear_package_cache; upgrade_apps_aur; upgrade_flatpaks; upgrade_appimages; list_foreign_packages; list_database_errors; reboot_pending_check
 }
 
 def upgrade_uv_project_dependencies [] {
@@ -214,6 +231,8 @@ alias hostname = sudo hostnamectl
 alias uvup = upgrade_uv_project_dependencies
 alias osage = os_install_age
 alias dud = delete_unused_dependencies
+alias lfp = list_foreign_packages
+alias lde = list_database_errors
 
 #?##############
 #?# STARSHIP ###

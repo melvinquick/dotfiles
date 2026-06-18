@@ -66,7 +66,11 @@ def list_foreign_packages [] {
     print "--------------------"
     print "| FOREIGN PACKAGES |"
     print "--------------------"
-    pacman -Qm
+    if (try { pacman -Qm } | is-empty) {
+        print "No foreign packages found!"
+        } else {
+            pacman -Qm
+        }
     print "\nBe sure to keep on top of any packages in this output for security reasons! Always read the PKGBUILD!"
     print "\n"
 }

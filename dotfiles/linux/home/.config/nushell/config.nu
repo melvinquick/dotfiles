@@ -240,7 +240,7 @@ def weather [
     if ($city == "") or ($state == "") {
         print "You need to provide the City AND State arguments! e.g., weather --city Philadelphia --state Pennsylvania"
     } else {
-        http get $"wttr.in/($city)+($state)+USA?format=%0A+Location:+($city),+($state)+%0A+Forecast:+%c+%0A+Rainfall:+%p+%0A+Temp:+%t\(%f\)+%0A+Moon:+%m+%0A"
+        http get $"https://wttr.in/($city)+($state)+USA?format=%0A+Location:+($city),+($state)+%0A+Forecast:+%c+%0A+Rainfall:+%p+%0A+Temp:+%t\(%f\)+%0A+Moon:+%m+%0A"
     }
 }
 

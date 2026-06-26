@@ -249,7 +249,7 @@ def weather [
 #?#############
 
 alias ff = ^fastfetch --config ~/.config/fastfetch/fastfetch.jsonc
-alias cat = bat --color=always {}
+alias cat = bat --color=always
 alias pyver = python --version
 alias reboot = sudo reboot now
 alias shutdown = sudo shutdown now

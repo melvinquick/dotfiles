@@ -95,7 +95,17 @@ def os_install_age [] {
 }
 
 def package_count [] {
-    yay -Q | wc -l
+    print "------------------"
+    print "| PACKAGE COUNTS |"
+    print "------------------"
+    let system_packages: int = yay -Q | wc -l | str trim | into int
+    let flatpaks: int = flatpak list | wc -l | str trim | into int
+    let appimages: int = am -l | grep ✓ | wc -l | str trim | into int
+    let total_packages: int = [$system_packages, $flatpaks, $appimages] | math sum
+    print $"System Packages: ($system_packages)"
+    print $"Flatpaks: ($flatpaks)"
+    print $"AppImages: ($appimages)"
+    print $"Total Packages: ($total_packages)"
 }
 
 def reboot_pending_check [

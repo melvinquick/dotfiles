@@ -137,7 +137,7 @@ def search_installed_programs [
     } else {
         let yay_matches: string = (try {yay -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
         let flatpak_matches: string = (try {flatpak list | grep -i $keyword | awk '{print "flathub/" $1}'} catch {""})
-        let am_matches: string = (try {am -f $keyword| lines | where $it =~ '^\s*◆' | where $it =~ $keyword | each { |line| $"am/(($line | str replace --regex '^\s*◆\s*' '' | split row ' : ' | first | str trim))" } | to text | awk '{print $1}'} catch {""})
+        let am_matches: string = (try {am -f $keyword | lines | where $it =~ '^\s*◆' | where $it =~ $keyword | each { |line| $"am/(($line | str replace --regex '^\s*◆\s*' '' | split row ' : ' | first | str trim))" } | to text | awk '{print $1}'} catch {""})
 
         let keyword_matches: string = ([$yay_matches, $flatpak_matches, $am_matches] | str join "\n" | str trim)
 

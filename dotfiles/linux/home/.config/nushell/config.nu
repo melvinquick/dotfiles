@@ -173,7 +173,8 @@ def upgrade_appimages [] {
     print "--------------------"
     print "| APPIMAGE UPDATES |"
     print "--------------------"
-    am -u; am -c
+    am -u
+    am -c
     print "\n"
 }
 
@@ -181,7 +182,8 @@ def upgrade_apps_aur [] {
     print "---------------"
     print "| YAY UPDATES |"
     print "---------------"
-    yay -Syu --noconfirm; yay -Sc --noconfirm
+    yay -Syu --noconfirm
+    yay -Sc --noconfirm
     print "\n"
 }
 
@@ -189,7 +191,8 @@ def upgrade_apps [] {
     print "------------------"
     print "| PACMAN UPDATES |"
     print "------------------"
-    sudo pacman -Syu --noconfirm; sudo pacman -Sc --noconfirm
+    sudo pacman -Syu --noconfirm
+    sudo pacman -Sc --noconfirm
     print "\n"
 }
 
@@ -197,12 +200,21 @@ def upgrade_flatpaks [] {
     print "-------------------"
     print "| FLATPAK UPDATES |"
     print "-------------------"
-    flatpak update --assumeyes; flatpak uninstall --unused --assumeyes
+    flatpak update --assumeyes
+    flatpak uninstall --unused --assumeyes
     print "\n"
 }
 
 def upgrade_system [] {
-    clear_package_cache; upgrade_apps; clear_package_cache; upgrade_apps_aur; upgrade_flatpaks; upgrade_appimages; list_foreign_packages; list_database_errors; reboot_pending_check
+    clear_package_cache
+    upgrade_apps
+    clear_package_cache
+    upgrade_apps_aur
+    upgrade_flatpaks
+    upgrade_appimages
+    list_foreign_packages
+    list_database_errors
+    reboot_pending_check
 }
 
 def upgrade_uv_project_dependencies [] {

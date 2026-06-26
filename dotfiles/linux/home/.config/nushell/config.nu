@@ -42,7 +42,10 @@ def delete_unused_dependencies [] {
 def docker_upgrade [] {
     let container_name: string = basename (pwd)
 
-    docker compose pull out+err> /dev/null;  docker compose down out+err> /dev/null; docker compose up -d out+err> /dev/null; docker image prune -af out+err> /dev/null
+    docker compose pull out+err> /dev/null
+    docker compose down out+err> /dev/null
+    docker compose up -d out+err> /dev/null
+    docker image prune -af out+err> /dev/null
 
     if $container_name == "nextcloud" {
         sleep 5sec

@@ -235,7 +235,7 @@ def upgrade_uv_project_dependencies [] {
 
 def weather [
     --city (-c): string = "" # Search for weather in this city
-    --state (-s): string = "" # Search for weaher in this state
+    --state (-s): string = "" # Search for weather in this state
     ] {
     if ($city == "") or ($state == "") {
         print "You need to provide the City AND State arguments! e.g., weather --city Philadelphia --state Pennsylvania"

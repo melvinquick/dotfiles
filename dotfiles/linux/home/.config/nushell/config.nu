@@ -2,9 +2,14 @@
 #?# INFORMATIONAL ###
 #?###################
 
-# * Author: Melvin quick
-# * Last Updated: 2026-05-26
-# * Notes: This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
+# * Author: Melvin Quick
+# * Last Updated: 2026-06-26
+
+# * Notes
+# * -----
+# * This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
+# * This config relies on certain tools being installed on the system
+# * Tool List: AM, Awk, Bandit, Bat, Docker, Fastfetch, Flatpak, FZF, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV, Yay
 
 #?####################
 #?# DEFAULT EDITOR ###

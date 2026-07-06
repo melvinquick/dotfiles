@@ -52,6 +52,7 @@ def docker_upgrade [] {
         docker compose exec -u www-data app php occ upgrade out+err> /dev/null
         docker compose exec -u www-data app php occ db:add-missing-indices out+err> /dev/null
         docker compose exec -u www-data app php occ maintenance:repair --include-expensive out+err> /dev/null
+        docker compose exec -u www-data app php occ maintenance:mode --off out+err> /dev/null
         ./ssl_restart_script.sh out+err> /dev/null
     }
 

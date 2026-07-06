@@ -48,7 +48,7 @@ def docker_upgrade [] {
     docker image prune -af out+err> /dev/null
 
     if $container_name == "nextcloud" {
-        sleep 5sec
+        sleep 10sec
         docker compose exec -u www-data app php occ upgrade out+err> /dev/null
         docker compose exec -u www-data app php occ db:add-missing-indices out+err> /dev/null
         docker compose exec -u www-data app php occ maintenance:repair --include-expensive out+err> /dev/null

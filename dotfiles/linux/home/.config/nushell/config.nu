@@ -268,6 +268,7 @@ alias osage = os_install_age
 alias dud = delete_unused_dependencies
 alias lfp = list_foreign_packages
 alias lde = list_database_errors
+alias motd = cat /etc/motd --plain
 
 #?##############
 #?# STARSHIP ###

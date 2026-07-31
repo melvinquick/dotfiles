@@ -3,7 +3,7 @@
 --?------------------
 
 -- * Author: Melvin quick
--- * Last Updated: 2026-05-11
+-- * Last Updated: 2026-07-31
 -- * Notes: This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 
 --?---------
@@ -41,7 +41,7 @@ local browser = "helium-browser"
 local codeEditor = "code"
 local lockscreen = "qs -c noctalia-shell ipc call lockScreen lock"
 local email = browser .. " --new-window https://mail.proton.me/"
-local aiChat = browser .. " --new-window https://duck.ai/"
+local aiChat = browser .. " --new-window https://chat.qwen.ai/"
 local screenshot =
 "mkdir -p ~/Pictures/Screenshots && grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
 local reloadEnvironment = "killall qs && qs -c noctalia-shell --no-duplicate"

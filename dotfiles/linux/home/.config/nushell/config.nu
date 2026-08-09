@@ -59,6 +59,45 @@ def docker_upgrade [] {
     print "The container upgrade process is complete!"
 }
 
+def download_ente_ensu_appimage [] {
+    print -n "Getting the latest Ente Ensu AppImage from GitHub..."
+    let url = (
+        curl -sL "https://api.github.com/repos/ente/ente/releases?per_page=30"
+        | from json
+        | where tag_name =~ '^ensu-'
+        | first
+        | get assets
+        | where name =~ '^Ensu_[0-9.]+_amd64\.AppImage$'
+        | first
+        | get browser_download_url
+    )
+    let version: string = ($url | str replace --regex '^.*/Ensu_([0-9.]+)_amd64\.AppImage$' '$1')
+    curl -sLo ente-ensu.AppImage $url
+    print " [OK]"
+
+    print -n "Making the AppImage executable..."
+    chmod +x ente-ensu.AppImage
+    print " [OK]"
+
+    print -n "Extracting the AppImage..."
+    ./ente-ensu.AppImage --appimage-extract out> /dev/null err> /dev/null
+    print " [OK]"
+
+    print -n "Removing unnecessary display libraries..."
+    rm -f ...(glob squashfs-root/usr/lib/lib{wayland-client,EGL,gbm,GL,drm}.so*)
+    print " [OK]"
+
+    print -n "Repackaging the AppImage..."
+    appimagetool squashfs-root ente-ensu.AppImage out> /dev/null err> /dev/null
+    print " [OK]"
+
+    print -n "Cleaning up temporary files..."
+    rm -rf squashfs-root
+    print " [OK]"
+
+    print $"Ente Ensu AppImage version ($version) has been downloaded and is ready to use!"
+}
+
 def fuzzy_bat [] {
     fzf --preview 'bat --color=always {}'
 }

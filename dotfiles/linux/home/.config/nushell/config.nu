@@ -3,13 +3,13 @@
 #?###################
 
 # * Author: Melvin Quick
-# * Last Updated: 2026-06-26
+# * Last Updated: 2026-08-13
 
 # * Notes
 # * -----
 # * This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 # * This config relies on certain tools being installed on the system
-# * Tool List: AM, Awk, Bandit, Bat, Docker, Fastfetch, Flatpak, FZF, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV, Yay
+# * Tool List: AM, Awk, Bandit, Bat, Docker, Fastfetch, Flatpak, FZF, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV
 
 #?####################
 #?# DEFAULT EDITOR ###
@@ -138,7 +138,7 @@ def package_count [] {
     print "------------------"
     print "| PACKAGE COUNTS |"
     print "------------------"
-    let system_packages: int = yay -Q | wc -l | str trim | into int
+    let system_packages: int = pacman -Q | wc -l | str trim | into int
     let flatpaks: int = flatpak list | wc -l | str trim | into int
     let appimages: int = am -l | grep ✓ | wc -l | str trim | into int
     let total_packages: int = [$system_packages, $flatpaks, $appimages] | math sum
@@ -155,7 +155,7 @@ def reboot_pending_check [
     print "| REBOOT CHECK |"
     print "----------------"
     let active_kernel: string = uname | get kernel-release | sed 's/\./-/g'
-    let current_kernel: string = yay -Qs kernel | grep "linux " | awk '{print $2}' | sed 's/\./-/g'
+    let current_kernel: string = pacman -Qs kernel | grep "linux " | awk '{print $2}' | sed 's/\./-/g'
 
     if $active_kernel != $current_kernel {
         print "REBOOT REQUIRED"
@@ -175,11 +175,11 @@ def search_installed_programs [
     if $keyword == "" {
         print "You need to provide a keyword to search for! e.g., search_installed_programs --keyword nushell"
     } else {
-        let yay_matches: string = (try {yay -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
+        let pacman_matches: string = (try {pacman -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e local/} catch {""})
         let flatpak_matches: string = (try {flatpak list | grep -i $keyword | awk '{print "flathub/" $1}'} catch {""})
         let am_matches: string = (try {am -f $keyword | lines | where $it =~ '^\s*◆' | where $it =~ $keyword | each { |line| $"am/(($line | str replace --regex '^\s*◆\s*' '' | split row ' : ' | first | str trim))" } | to text | awk '{print $1}'} catch {""})
 
-        let keyword_matches: string = ([$yay_matches, $flatpak_matches, $am_matches] | str join "\n" | str trim)
+        let keyword_matches: string = ([$pacman_matches, $flatpak_matches, $am_matches] | str join "\n" | str trim)
 
         if ($keyword_matches | is-empty) {
             print $"No programs found on the system containing the keyword '($keyword)'"
@@ -195,11 +195,11 @@ def search_repo_programs [
     if $keyword == "" {
         print "You need to provide a keyword to search for! e.g., search_repo_programs --keyword nushell"
     } else {
-        let yay_matches: string = (try {yay -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e aur/ -e local/} catch {""})
+        let pacman_matches: string = (try {pacman -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e local/} catch {""})
         let flatpak_matches: string = (try {flatpak search $keyword | awk -F'\t' '{print $NF "/" $1, $4}'} catch {""})
         let am_matches: string = (try {am -q $keyword | lines | where $it =~ '^\s*◆' | each { |line| $"am/(($line | str replace --regex '^\s*◆\s*' '' | split row ' : ' | first | str trim))" } | to text} catch {""})
         
-        let keyword_matches: string = ([$yay_matches, $flatpak_matches, $am_matches] | str join "\n" | str trim)
+        let keyword_matches: string = ([$pacman_matches, $flatpak_matches, $am_matches] | str join "\n" | str trim)
 
         if ($keyword_matches | is-empty) {
             print $"No programs found in the Standard Repositories, Chaotic AUR, AUR, or Flathub containing the keyword '($keyword)'"
@@ -215,15 +215,6 @@ def upgrade_appimages [] {
     print "--------------------"
     am -u
     am -c
-    print "\n"
-}
-
-def upgrade_apps_aur [] {
-    print "---------------"
-    print "| YAY UPDATES |"
-    print "---------------"
-    yay -Syu --noconfirm
-    yay -Sc --noconfirm
     print "\n"
 }
 
@@ -249,7 +240,6 @@ def upgrade_system [] {
     clear_package_cache
     upgrade_apps
     clear_package_cache
-    upgrade_apps_aur
     upgrade_flatpaks
     upgrade_appimages
     list_foreign_packages

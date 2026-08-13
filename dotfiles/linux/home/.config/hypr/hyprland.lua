@@ -52,7 +52,7 @@ local reloadEnvironment = "killall qs && qs -c noctalia-shell --no-duplicate"
 
 -- * https://wiki.hypr.land/Configuring/Basics/Autostart/
 hl.on("hyprland.start", function()
-    hl.exec_cmd("qs -c noctalia-shell --no-duplicate")
+    hl.exec_cmd("noctalia")
     hl.exec_cmd("nextcloud")
 end)
 

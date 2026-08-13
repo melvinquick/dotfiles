@@ -209,7 +209,6 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(codeEditor))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(taskManager))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(aiChat))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(email))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lockscreen))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(screenshot))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(reloadEnvironment))
 

@@ -1,0 +1,81 @@
+[bar.default]
+end = [ "notifications", "clipboard", "session" ]
+start = [ "workspaces" ]
+thickness = 30
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_google]
+    type = "google"
+
+[idle]
+pre_action_fade_seconds = 0
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-2" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1720.0
+    cy = 1258.0
+    output = "DP-2"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[nightlight]
+enabled = true
+
+[shell]
+external_ip_enabled = true
+font_family = "FiraCode Nerd Font"
+
+    [shell.panel]
+    open_near_click_session = true
+
+[theme]
+source = "wallpaper"
+
+[wallpaper]
+directory = "/home/melvinquick/Pictures/wallpapers"
+
+    [wallpaper.default]
+    path = "/home/melvinquick/Pictures/wallpapers/solar_system.png"
+
+    [wallpaper.last]
+    path = "/home/melvinquick/Pictures/wallpapers/solar_system.png"
+
+[weather]
+unit = "imperial"
+
+[widget.clock]
+format = "{:%H:%M:%S}"
+
+[widget.workspaces]
+show_labels = false

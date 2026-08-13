@@ -39,7 +39,6 @@ local menu = "fuzzel"
 local taskManager = terminal .. " --command btop"
 local browser = "helium-browser"
 local codeEditor = "code"
-local lockscreen = "qs -c noctalia-shell ipc call lockScreen lock"
 local email = browser .. " --new-window https://mail.proton.me/"
 local aiChat = browser .. " --new-window https://chat.qwen.ai/"
 local screenshot =

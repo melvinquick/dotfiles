@@ -3,7 +3,7 @@
 --?------------------
 
 -- * Author: Melvin quick
--- * Last Updated: 2026-07-31
+-- * Last Updated: 2026-08-13
 -- * Notes: This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 
 --?---------

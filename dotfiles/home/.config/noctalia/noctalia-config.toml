@@ -1,5 +1,6 @@
 [bar.default]
-end = [ "notifications", "clipboard", "session" ]
+center = [ "clock", "spacer_2", "media" ]
+end = [ "volume", "notifications", "clipboard", "session" ]
 start = [ "workspaces" ]
 thickness = 30
 
@@ -74,8 +75,15 @@ directory = "/home/melvinquick/Pictures/wallpapers"
 [weather]
 unit = "imperial"
 
+[widget.audio_visualizer]
+width = 60
+
 [widget.clock]
 format = "{:%I:%M:%S %p | %Y-%m-%d}"
+
+[widget.spacer_2]
+anchor = true
+type = "spacer"
 
 [widget.workspaces]
 show_labels = false

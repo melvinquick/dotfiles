@@ -7,4 +7,4 @@
 
 ## Purpose
 
-The general purpose of this repo is to provide a backup for myself for my config files for Linux and Windows, while also giving others the chance to use these configs at their discretion.
+The general purpose of this repo is to provide a backup for myself for my config files for Linux while also giving others the chance to use these configs at their discretion.

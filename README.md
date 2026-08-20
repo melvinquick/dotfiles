@@ -2,8 +2,8 @@
 
 ## Donations
 
-- [Buy Me A Coffee](https://www.buymeacoffee.com/KingKairos)
-- [GitHub Sponsors](https://github.com/sponsors/melvinquick)
+[Ko-fi](https://ko-fi.com/melvinquick)  
+[GitHub Sponsors](https://github.com/sponsors/melvinquick)
 
 ## Purpose
 

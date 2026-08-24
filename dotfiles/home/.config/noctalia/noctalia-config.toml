@@ -80,9 +80,9 @@ width = 60
 [widget.clock]
 format = "{:%I:%M:%S %p | %Y-%m-%d}"
 
-[widget.spacer_2]
-anchor = true
-type = "spacer"
+[widget.media]
+album_art_only = true
+art_size = 24
 
 [widget.workspaces]
 show_labels = false

@@ -169,6 +169,80 @@ def reboot_pending_check [
     }
 }
 
+def run_nextcloud_jobs [] {
+    # === TOP BANNER ===
+    print ""
+    print "-----------------"
+    print "| JOB EXECUTION |"
+    print "-----------------"
+    print ""
+
+    # Step 1: Safe capture
+    let raw = try {
+    docker exec -u www-data nextcloud php occ background-job:list out+err>| str join "\n"
+    } catch { |e|
+    print $"Docker failed: ($e.msg)"; return
+    }
+
+    if ($raw | str length) < 100 or not ($raw | str contains "+----") {
+    print "Bad output format"; print ($raw | str substring 0..200); return
+    }
+
+    # Step 2: Extract IDs
+    let ids = ($raw
+    | lines
+    | where { |l| $l =~ '^\|\s*\d+\s*\|' }
+    | each { |l| $l | str replace --regex '^\|\s*(\d+)\s*\|.*' '$1' }
+    | where { |id| ($id | str length) > 0 })
+
+    if ($ids | length) == 0 {
+    print "Zero IDs extracted"; return
+    }
+
+    print $"Found ($ids | length) jobs. Executing..."
+    print ""
+
+    # Helper: zero-pad to 2 digits
+    def pad2 [n: int] { if $n < 10 { $"0($n)" } else { $"($n)" } }
+    let total = ($ids | length)
+
+    # Step 3: Execute with clean inline progress
+    let results = ($ids | enumerate | each { |row|
+    let idx = $row.index + 1
+    print -n $"[(pad2 $idx)/(pad2 $total)] → ($row.item) ... "
+    
+    let out = try {
+        docker exec -u www-data nextcloud sh -c $"timeout 30 php occ background-job:execute ($row.item)" out+err>| str join "\n"
+    } catch { |e| $"ERR: ($e.msg)" }
+    
+    let is_ok = not (($out | str contains "Timed out") or ($out | str contains "ERR:") or ($out | str contains "Fatal"))
+    print (if $is_ok { "✅" } else { "⚠️" })
+    
+    { id: $row.item, status: (if $is_ok { "✅" } else { "⚠️" }), detail: ($out | str substring 0..50 | str replace --all '\n' ' ') }
+    })
+
+    # === SUMMARY BANNER (Your Style) ===
+    print ""
+    print "---------------------"
+    print "| EXECUTION SUMMARY |"
+    print "---------------------"
+    $results | group-by status | transpose status count | sort-by count -r | table -e
+
+    let ok_count = ($results | where status == "✅" | length)
+    let fail_count = ($results | where status == "⚠️" | length)
+
+    print ""
+    if $fail_count == 0 {
+    print $"🎉 All ($ok_count) jobs executed successfully!"
+    } else {
+    print $"⚠️ Completed: ($ok_count) successful, ($fail_count) need attention"
+    print ""
+    print "Jobs requiring review:"
+    $results | where status == "⚠️" | select id detail | table -e
+    }
+    print ""
+}
+
 def search_installed_programs [
     --keyword (-k): string = "" # Pass a keyword to search your installed applications for
     ] {

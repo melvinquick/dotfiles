@@ -39,7 +39,7 @@ local menu = "fuzzel"
 local taskManager = terminal .. " --command btop"
 local browser = "helium-browser"
 local codeEditor = "code"
-local email = browser .. " --new-window https://mail.proton.me/"
+local email = "flatpak run me.proton.Mail"
 local aiChat = browser .. " --new-window https://chat.qwen.ai/"
 local screenshot =
 "mkdir -p ~/Pictures/Screenshots && grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"

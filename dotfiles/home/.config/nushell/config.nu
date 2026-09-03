@@ -3,13 +3,13 @@
 #?###################
 
 # * Author: Melvin Quick
-# * Last Updated: 2026-08-13
+# * Last Updated: 2026-09-03
 
 # * Notes
 # * -----
 # * This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 # * This config relies on certain tools being installed on the system
-# * Tool List: AM, Awk, Bandit, Bat, Docker, Fastfetch, Flatpak, FZF, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV
+# * Tool List: AM, Awk, Bandit, Bat, Docker, Fastfetch, Flatpak, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV
 
 #?####################
 #?# DEFAULT EDITOR ###
@@ -96,10 +96,6 @@ def download_ente_ensu_appimage [] {
     print " [OK]"
 
     print $"Ente Ensu AppImage version ($version) has been downloaded and is ready to use!"
-}
-
-def fuzzy_bat [] {
-    fzf --preview 'bat --color=always {}'
 }
 
 def list_database_errors [] {

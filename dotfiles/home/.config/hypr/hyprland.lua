@@ -3,7 +3,7 @@
 --?------------------
 
 -- * Author: Melvin quick
--- * Last Updated: 2026-08-13
+-- * Last Updated: 2026-09-03
 -- * Notes: This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 
 --?---------
@@ -40,6 +40,7 @@ local taskManager = terminal .. " --command btop"
 local browser = "helium-browser"
 local codeEditor = "code"
 local email = "flatpak run me.proton.Mail"
+local messages = "android-messages-desktop"
 local aiChat = browser .. " --new-window https://chat.qwen.ai/"
 local screenshot =
 "mkdir -p ~/Pictures/Screenshots && grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
@@ -208,6 +209,7 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(codeEditor))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(taskManager))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(aiChat))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(email))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(messages))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(screenshot))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(reloadEnvironment))
 

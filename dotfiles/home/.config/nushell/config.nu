@@ -136,7 +136,7 @@ def package_count [] {
     print "------------------"
     let system_packages: int = pacman -Q | wc -l | str trim | into int
     let flatpaks: int = flatpak list | wc -l | str trim | into int
-    let appimages: int = am -l | grep ✓ | wc -l | str trim | into int
+    let appimages: int = am -f | grep -oP 'INSTALLED \K\d+' | str trim | into int
     let total_packages: int = [$system_packages, $flatpaks, $appimages] | math sum
     print $"System Packages: ($system_packages)"
     print $"Flatpaks: ($flatpaks)"

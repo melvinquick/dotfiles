@@ -32,7 +32,7 @@ def bandit_check [] {
 }
 
 def clear_package_cache [] {
-    sudo find /var/cache/pacman/pkg -maxdepth 1 -name 'download-*' -exec rm -rf {} +
+    sudo find /var/cache/pacman/pkg -maxdepth 1 -name 'download-*' -exec rm -rf '{}' +
 }
 
 def delete_unused_dependencies [] {

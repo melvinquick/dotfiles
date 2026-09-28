@@ -40,23 +40,27 @@ def delete_unused_dependencies [] {
 }
 
 def docker_upgrade [] {
-    let container_name: string = basename (pwd)
+    let dirs: list<string> = ls | where type == dir | get name
 
-    docker compose pull out+err> /dev/null
-    docker compose down out+err> /dev/null
-    docker compose up -d out+err> /dev/null
-    docker image prune -af out+err> /dev/null
+    for $dir in $dirs {
+        cd ~/docker/($dir)
 
-    if $container_name == "nextcloud" {
-        sleep 10sec
-        docker compose exec -u www-data app php occ upgrade out+err> /dev/null
-        docker compose exec -u www-data app php occ db:add-missing-indices out+err> /dev/null
-        docker compose exec -u www-data app php occ maintenance:repair --include-expensive out+err> /dev/null
-        docker compose exec -u www-data app php occ maintenance:mode --off out+err> /dev/null
-        ./ssl_restart_script.sh out+err> /dev/null
+        docker compose pull out+err> /dev/null
+        docker compose down out+err> /dev/null
+        docker compose up -d out+err> /dev/null
+        docker image prune -af out+err> /dev/null
+
+        if $dir == "nextcloud" {
+            sleep 10sec
+            docker compose exec -u www-data app php occ upgrade out+err> /dev/null
+            docker compose exec -u www-data app php occ db:add-missing-indices out+err> /dev/null
+            docker compose exec -u www-data app php occ maintenance:repair --include-expensive out+err> /dev/null
+            docker compose exec -u www-data app php occ maintenance:mode --off out+err> /dev/null
+            ./ssl_restart_script.sh out+err> /dev/null
+        }
+
+        print $"Container ($dir) has been upgraded successfully!"
     }
-
-    print "The container upgrade process is complete!"
 }
 
 def download_ente_ensu_appimage [] {

@@ -3,7 +3,7 @@
 --?------------------
 
 -- * Author: Melvin quick
--- * Last Updated: 2026-09-03
+-- * Last Updated: 2026-10-01
 -- * Notes: This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 
 --?---------
@@ -41,7 +41,7 @@ local browser = "flatpak run com.brave.Browser"
 local codeEditor = "code"
 local email = "flatpak run me.proton.Mail"
 local messages = "android-messages-desktop"
-local aiChat = browser .. " --new-window https://chat.qwen.ai/"
+local aiChat = "flatpak run ai.jan.Jan"
 local screenshot =
 "mkdir -p ~/Pictures/Screenshots && grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
 local reloadEnvironment = "killall qs && qs -c noctalia-shell --no-duplicate"

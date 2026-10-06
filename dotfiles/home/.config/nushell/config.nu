@@ -3,7 +3,7 @@
 #?###################
 
 # * Author: Melvin Quick
-# * Last Updated: 2026-09-28
+# * Last Updated: 2026-10-06
 
 # * Notes
 # * -----
@@ -11,11 +11,12 @@
 # * This config relies on certain tools being installed on the system
 # * Tool List: AM, Awk, Bandit, Bat, Docker, Fastfetch, Flatpak, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV
 
-#?####################
-#?# DEFAULT EDITOR ###
-#?####################
+#?#####################
+#?# DEFAULT EDITORS ###
+#?#####################
 
 $env.config.buffer_editor = "code"
+$env.EDITOR = "micro"
 
 #?###########################
 #?# REMOVE WELCOME BANNER ###

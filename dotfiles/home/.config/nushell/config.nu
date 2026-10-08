@@ -170,6 +170,22 @@ def reboot_pending_check [
     }
 }
 
+def reflector [] {
+    print "Updating the mirrorlist with the 5 best mirrors in the US by download rate..."
+    try {sudo reflector --latest 5 --country us --sort rate --save /etc/pacman.d/mirrorlist} catch { |e|
+        print $"Error updating mirrorlist: ($e.msg)"
+        return
+    }
+    print "Mirrorlist updated successfully!\n"
+    let see_mirrors: string = input "Would you like to see the updated mirrorlist? (y/n): "
+    if $see_mirrors == "y" {
+        print ""
+        cat /etc/pacman.d/mirrorlist
+    } else {
+        print "\nYou can view the updated mirrorlist later by running: mirrorlist"
+    }
+}
+
 def run_nextcloud_jobs [] {
     # === TOP BANNER ===
     print ""

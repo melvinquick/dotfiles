@@ -3,7 +3,7 @@
 #?###################
 
 # * Author: Melvin Quick
-# * Last Updated: 2026-10-06
+# * Last Updated: 2026-10-09
 
 # * Notes
 # * -----
@@ -62,6 +62,16 @@ def docker_upgrade [] {
 
         print $"Container ($dir) has been upgraded successfully!"
     }
+}
+
+def download_arch_iso [] {
+    let path: string = $"($env.HOME)/Downloads/archlinux-x86_64.iso"
+    print "Downloading the Arch Linux ISO from the MIT mirror..."
+    try { curl https://mirrors.mit.edu/archlinux/iso/latest/archlinux-x86_64.iso --output $path --silent} catch { |e|
+        print $"Error downloading Arch Linux ISO: ($e.msg)"
+        return
+    }
+    print $"Arch Linux ISO has been downloaded successfully to ($path)"
 }
 
 def download_ente_ensu_appimage [] {

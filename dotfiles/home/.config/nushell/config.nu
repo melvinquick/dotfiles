@@ -9,7 +9,7 @@
 # * -----
 # * This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 # * This config relies on certain tools being installed on the system
-# * Tool List: AM, Awk, Bandit, Bat, Docker, Fastfetch, Flatpak, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV
+# * Tool List: AM, Awk, Bandit, Bat, Caligula, Curl, Docker, Fastfetch, Flatpak, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV
 
 #?#####################
 #?# DEFAULT EDITORS ###

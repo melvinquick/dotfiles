@@ -32,6 +32,14 @@ def bandit_check [] {
     bandit -c bandit.yaml -r .
 }
 
+def burn_arch_iso [] {
+    cd ~/Downloads
+    download_arch_iso
+    print "Starting Caligula to burn the Arch Linux ISO to a USB drive...\n"
+    caligula burn archlinux-x86_64.iso
+    print "\nArch Linux ISO has been burned to the USB drive successfully!"
+}
+
 def clear_package_cache [] {
     sudo find /var/cache/pacman/pkg -maxdepth 1 -name 'download-*' -exec rm -rf '{}' +
 }

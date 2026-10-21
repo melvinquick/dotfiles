@@ -3,7 +3,7 @@
 --?------------------
 
 -- * Author: Melvin quick
--- * Last Modified: 2026-10-13
+-- * Last Modified: 2026-10-21
 -- * Notes: This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 
 --?---------
@@ -34,7 +34,7 @@ hl.monitor({
 
 -- * https://wiki.hypr.land/Configuring/Keywords/
 local terminal = "alacritty"
-local fileManager = "thunar"
+local fileManager = "pcmanfm"
 local menu = "fuzzel"
 local taskManager = terminal .. " --command btop"
 local browser = "flatpak run com.brave.Browser"

@@ -135,7 +135,7 @@ def reboot_pending_check [
     print "| REBOOT CHECK |"
     print "----------------"
     let active_kernel: string = uname | get kernel-release | sed 's/\./-/g'
-    let current_kernel: string = pacman -Qs kernel | grep "linux " | awk '{print $2}' | sed 's/\./-/g'
+    let current_kernel: string = pacman -Qs kernel | grep "local/linux " | awk '{print $2}' | sed 's/\./-/g'
 
     if $active_kernel != $current_kernel {
         print "REBOOT REQUIRED"

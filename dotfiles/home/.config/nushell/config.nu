@@ -3,13 +3,13 @@
 #?###################
 
 # * Author: Melvin Quick
-# * Last Modified: 2026-10-12
+# * Last Modified: 2026-10-27
 
 # * Notes
 # * -----
 # * This config is best viewed with the Better Comments extension by Aaron Bond in VS Code
 # * This config relies on certain tools being installed on the system
-# * Tool List: AM, Awk, Bandit, Bat, Caligula, Curl, Docker, Flatpak, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV
+# * Tool List: AM, Awk, Bandit, Bat, Caligula, Curl, Docker, Flatpak, Grep, Head, Hostnamectl, Pacman, Python, Sed, Starship, Uname, UV, Yay
 
 #?#####################
 #?# DEFAULT EDITORS ###
@@ -245,7 +245,7 @@ def search_installed_programs [
     if $keyword == "" {
         print "You need to provide a keyword to search for! e.g., search_installed_programs --keyword nushell"
     } else {
-        let pacman_matches: string = (try {pacman -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e local/} catch {""})
+        let pacman_matches: string = (try {yay -Qs $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e local/ -e aur/} catch {""})
         let flatpak_matches: string = (try {flatpak list | grep -i $keyword | awk '{print "flathub/" $1}'} catch {""})
         let am_matches: string = (try {am -f $keyword | lines | where $it =~ '^\s*◆' | where $it =~ $keyword | each { |line| $"am/(($line | str replace --regex '^\s*◆\s*' '' | split row ' : ' | first | str trim))" } | to text | awk '{print $1}'} catch {""})
 
@@ -265,7 +265,7 @@ def search_repo_programs [
     if $keyword == "" {
         print "You need to provide a keyword to search for! e.g., search_repo_programs --keyword nushell"
     } else {
-        let pacman_matches: string = (try {pacman -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e local/} catch {""})
+        let pacman_matches: string = (try {yay -Ss $keyword | grep -e core/ -e extra/ -e community/ -e multilib/ -e testing/ -e staging/ -e local/ -e aur/} catch {""})
         let flatpak_matches: string = (try {flatpak search $keyword | awk -F'\t' '{print $NF "/" $1, $4}'} catch {""})
         let am_matches: string = (try {am -q $keyword | lines | where $it =~ '^\s*◆' | each { |line| $"am/(($line | str replace --regex '^\s*◆\s*' '' | split row ' : ' | first | str trim))" } | to text} catch {""})
         
@@ -297,6 +297,15 @@ def upgrade_apps [] {
     print "\n"
 }
 
+def upgrade_apps_aur [] {
+    print "---------------"
+    print "| YAY UPDATES |"
+    print "---------------"
+    yay -Syu --noconfirm
+    yay -Sc --noconfirm
+    print "\n"
+}
+
 def upgrade_flatpaks [] {
     print "-------------------"
     print "| FLATPAK UPDATES |"
@@ -309,6 +318,8 @@ def upgrade_flatpaks [] {
 def upgrade_system [] {
     clear_package_cache
     upgrade_apps
+    clear_package_cache
+    upgrade_apps_aur
     clear_package_cache
     upgrade_flatpaks
     upgrade_appimages

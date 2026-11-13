@@ -329,17 +329,17 @@ def upgrade_system [] {
 }
 
 def upgrade_uv_project_dependencies [] {
-    print "---------------------------------"
-    print "| UPDATING PROJECT DEPENDENCIES |"
-    print "---------------------------------"
-    uv lock --upgrade --color auto
+    print "--------------------------------"
+    print "| BUMPING PROJECT DEPENDENCIES |"
+    print "--------------------------------"
+    uvbump --root . --upgrade
 
     print "\n"
     
     print "--------------------------------"
     print "| SYNCING PROJECT DEPENDENCIES |"
     print "--------------------------------"
-    uv sync
+    uv sync --upgrade --all-groups
 
     print "\n"
 }

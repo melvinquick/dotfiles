@@ -1,4 +1,4 @@
-<p align="center"> <img src="images/dotfiles.png"/> </p>
+<p align="center"> <img src="images/dotfiles_256.png"/> </p>
 
 ## Donations
 
